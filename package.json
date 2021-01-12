@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "lint": "standard",
+    "vercel-build": "npm run build",
     "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
