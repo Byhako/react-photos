@@ -2,27 +2,40 @@ import React, { useState, useEffect } from 'react'
 import { Category } from '../Category'
 import { List, Item } from './styles'
 
-export const ListCategories = () => {
+const useCategoriesData = () => {
   const [categories, setCategories] = useState([])
-  const [showFixed, setShowFixed] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
     window.fetch('https://petgram-api-ruben.vercel.app/categories')
       .then(res => res.json())
-      .then(response => setCategories(response))
+      .then(response => {
+        setCategories(response)
+        setLoading(false)
+      })
 
+    return () => document.removeEventListener('scroll')
+  }, [])
+
+  return { categories, loading }
+}
+
+export const ListCategories = () => {
+  const [showFixed, setShowFixed] = useState(false)
+  const { categories, loading } = useCategoriesData()
+
+  useEffect(() => {
     const onScroll = () => {
       const newShowFixed = window.scrollY > 200
       setShowFixed(newShowFixed)
     }
 
     document.addEventListener('scroll', onScroll)
-
-    return () => document.removeEventListener('scroll')
   }, [])
 
   const renderList = (fixed) => (
-    <List className={fixed ? 'fixed' : ''}>
+    <List fixed={fixed}>
       {categories.map(category => (
         <Item key={category.id}>
           <Category {...category} />
@@ -30,6 +43,10 @@ export const ListCategories = () => {
       ))}
     </List>
   )
+
+  if (loading) {
+    return 'Cargando . . .'
+  }
 
   return (
     <>
