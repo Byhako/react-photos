@@ -8,14 +8,11 @@ import { NavBar } from './components/NavBar'
 import { Favs } from './pages/Favs'
 import { User } from './pages/User'
 import { NoRegister } from './pages/NoRegister'
+import Context from './Contex'
 
 export const App = () => {
   // const urlParams = new window.URLSearchParams(window.location.search)
   // const detailId = urlParams.get('detail')
-
-  const UserLogged = ({ children }) => {
-    return children({ isAuth: false })
-  }
 
   return (
     <>
@@ -27,7 +24,7 @@ export const App = () => {
         <Details path='/detail/:detailId' />
       </Router>
 
-      <UserLogged>
+      <Context.Consumer>
         {
           ({ isAuth }) => (
             isAuth
@@ -41,7 +38,7 @@ export const App = () => {
               </Router>
           )
         }
-      </UserLogged>
+      </Context.Consumer>
       <NavBar />
     </>
   )
