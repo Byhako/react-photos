@@ -14,8 +14,6 @@ const useCategoriesData = () => {
         setCategories(response)
         setLoading(false)
       })
-
-    return () => document.removeEventListener('scroll')
   }, [])
 
   return { categories, loading }
@@ -32,6 +30,7 @@ export const ListCategories = () => {
     }
 
     document.addEventListener('scroll', onScroll)
+    return () => document.removeEventListener('scroll', () => {})
   }, [])
 
   const renderList = (fixed) => (
