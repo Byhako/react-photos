@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Context from '../Contex'
 import { USerForm } from '../components/UserForm'
 import styled from 'styled-components'
+import { RegisterMutation } from '../container/RegisterMutation'
 
 const Div = styled.div`
   display: flex;
@@ -29,7 +30,20 @@ export const NoRegister = () => {
         ({ activateAuth }) => (
           state
             ? <>
-              <USerForm onSubmit={activateAuth} title='Registrarse' />
+              <RegisterMutation>
+                {
+                  (register) => {
+                    const onSubmit = ({ email, password }) => {
+                      const input = { email, password }
+                      const variables = { input }
+                      register({ variables }).then(activateAuth)
+                    }
+                    return (
+                      <USerForm onSubmit={onSubmit} title='Registrarse' />
+                    )
+                  }
+                }
+              </RegisterMutation>
               <Div>
                 <p>¿Ya tienes una cuenta?</p>
                 <span onClick={() => setState(false)}>Inicia sesión</span>
