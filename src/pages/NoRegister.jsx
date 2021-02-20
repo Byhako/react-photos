@@ -3,6 +3,7 @@ import Context from '../Contex'
 import { USerForm } from '../components/UserForm'
 import styled from 'styled-components'
 import { RegisterMutation } from '../container/RegisterMutation'
+import { LoginMutation } from '../container/LoginMutation'
 
 const Div = styled.div`
   display: flex;
@@ -56,7 +57,26 @@ export const NoRegister = () => {
               </Div>
             </>
             : <>
-              <USerForm onSubmit={activateAuth} title='Iniciar sesión' />
+              <LoginMutation>
+                {
+                  (login, { loading, error }) => {
+                    const onSubmit = ({ email, password }) => {
+                      const input = { email, password }
+                      const variables = { input }
+                      login({ variables }).then(activateAuth)
+                    }
+                    const errorMsg = error && 'Tonto, credenciales incorrectas.'
+                    return (
+                      <USerForm
+                        onSubmit={onSubmit}
+                        title='Iniciar sesión'
+                        error={errorMsg}
+                        loading={loading}
+                      />
+                    )
+                  }
+                }
+              </LoginMutation>
               <Div>
                 <p>¿No tienes una cuenta?</p>
                 <span onClick={() => setState(true)}>Registrate</span>
