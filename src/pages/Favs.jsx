@@ -1,10 +1,11 @@
 import React from 'react'
 import { FavsQuery } from '../container/GetFavorites'
+import { Title } from './styles'
 
 export const Favs = () => {
   return (
     <>
-      <h1>FAVS</h1>
+      <Title>Mis Favoritos</Title>
       <FavsQuery />
     </>
   )

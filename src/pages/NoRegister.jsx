@@ -1,27 +1,9 @@
 import React, { useState, useContext } from 'react'
 import { Context } from '../Contex'
 import { USerForm } from '../components/UserForm'
-import styled from 'styled-components'
 import { RegisterMutation } from '../container/RegisterMutation'
 import { LoginMutation } from '../container/LoginMutation'
-
-const Div = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  p {
-    color: #222;
-    margin: 0
-  }
-  span {
-    cursor: pointer;
-    color: #b700b1;
-    margin-left: 5px;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-`
+import { Div } from './styles'
 
 export const NoRegister = () => {
   const { activateAuth } = useContext(Context)

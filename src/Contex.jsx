@@ -10,6 +10,10 @@ const Provider = ({ children }) => {
     activateAuth: (token) => {
       window.sessionStorage.setItem('token', token)
       setIsAuth(token)
+    },
+    removeAuth: () => {
+      window.sessionStorage.removeItem('token')
+      setIsAuth('')
     }
   }
 

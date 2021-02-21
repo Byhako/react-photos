@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Context } from '../Contex'
+import { Title, Button } from './styles'
 
 export const User = () => {
+  const { removeAuth } = useContext(Context)
   return (
-    <h1>User</h1>
+    <>
+      <Title>Usuario</Title>
+      <Button onClick={removeAuth}>Cerrar sesión</Button>
+    </>
   )
 }
