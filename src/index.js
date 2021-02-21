@@ -17,8 +17,9 @@ const client = new ApolloClient({
     })
   },
   onError: (error) => {
-    const { nerworkError } = error
-    if (nerworkError && nerworkError.result.code === 'invalid_token') {
+    // const { nerworkError } = error
+    // console.log(error)
+    if (error) {
       window.sessionStorage.removeItem('token')
       window.location.href = '/user'
     }
