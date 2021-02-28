@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import { Context } from '../Contex'
-import { Title, Button } from './styles'
+import { Button } from './styles'
+import { Layout } from '../components/Layout'
 
 export const User = () => {
   const { removeAuth } = useContext(Context)
   return (
-    <>
-      <Title>Usuario</Title>
+    <Layout title='Usuario'>
       <Button onClick={removeAuth}>Cerrar sesión</Button>
-    </>
+    </Layout>
   )
 }

@@ -1,12 +1,9 @@
 import React from 'react'
 import { FavsQuery } from '../container/GetFavorites'
-import { Title } from './styles'
+import { Layout } from '../components/Layout'
 
-export const Favs = () => {
-  return (
-    <>
-      <Title>Mis Favoritos</Title>
-      <FavsQuery />
-    </>
-  )
-}
+export const Favs = () => (
+  <Layout title='Favoritos' subtitle='Mis animales favoritos'>
+    <FavsQuery />
+  </Layout>
+)

@@ -5,12 +5,13 @@ import { RegisterMutation } from '../container/RegisterMutation'
 import { LoginMutation } from '../container/LoginMutation'
 import { navigate } from '@reach/router'
 import { Div } from './styles'
+import { Layout } from '../components/Layout'
 
 export const NoRegister = () => {
   const { activateAuth } = useContext(Context)
   const [state, setState] = useState(false)
   return (
-    <>
+    <Layout title='Login'>
       {
         state
           ? <>
@@ -74,6 +75,6 @@ export const NoRegister = () => {
             </Div>
           </>
       }
-    </>
+    </Layout>
   )
 }
