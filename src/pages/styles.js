@@ -44,3 +44,9 @@ export const Button = styled.button`
     opacity: 0.4
   }
 `
+
+export const H1 = styled.h1`
+  text-align: center;
+  color: #222;
+  font-family: cursive;
+`

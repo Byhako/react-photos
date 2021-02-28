@@ -3,6 +3,7 @@ import { Context } from '../Contex'
 import { USerForm } from '../components/UserForm'
 import { RegisterMutation } from '../container/RegisterMutation'
 import { LoginMutation } from '../container/LoginMutation'
+import { navigate } from '@reach/router'
 import { Div } from './styles'
 
 export const NoRegister = () => {
@@ -22,6 +23,7 @@ export const NoRegister = () => {
                     register({ variables }).then(({ data }) => {
                       const { signup } = data
                       activateAuth(signup)
+                      navigate('/')
                     })
                   }
                   const errorMsg = error && 'El usuario ya existe.'
@@ -51,6 +53,7 @@ export const NoRegister = () => {
                     login({ variables }).then(({ data }) => {
                       const { login } = data
                       activateAuth(login)
+                      navigate('/')
                     })
                   }
                   const errorMsg = error && 'Tonto, credenciales incorrectas.'
