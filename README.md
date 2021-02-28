@@ -10,3 +10,5 @@ https://react-svgr.com/playground/
 https://petgram-api-ruben.vercel.app/categories
 https://petgram-api-ruben.vercel.app/graphql
 
+ npx serve dist -s
+

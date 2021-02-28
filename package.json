@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
+    "dev": "webpack --mode development",
     "lint": "standard",
     "vercel-build": "npm run build",
     "start": "webpack-dev-server --history-api-fallback",
